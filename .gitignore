@@ -2,5 +2,5 @@
 __pycache__
 myvenv
 media
-db.sqlite
+*.sqlite3
 .DS_Store
