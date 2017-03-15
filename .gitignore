@@ -1,0 +1,6 @@
+*.pyc
+__pycache__
+myvenv
+media
+db.sqlite
+.DS_Store
