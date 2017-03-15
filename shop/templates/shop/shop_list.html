@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+{% block title %}Awesome shop{% endblock %}
+
+{% block main %}
+<div class="container">
+	<header class="header">
+		<h1 class="header__title">Awesome-shop.ru</h1>
+	</header>
+	<h2 class='container__section-name'>Last items</h2>
+	<div class="grid">
+		{% for item in items %}
+		<div class="grid__item">
+			<div class="shop-item">
+				<h3><a href="#" class="shop-item__title">{{ item.name }}</a></h3>
+				<p class="shop-item__description">{{ item.description }}</p>
+				<button class="shop-item__button">Add to cart</button>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
