@@ -6,6 +6,7 @@ def upload_img(object,filename):
 
 class ShopCategory(models.Model):
 	name = models.TextField(verbose_name="Наименование")
+	slug = models.SlugField(max_length=200,verbose_name="Ссылка")
 
 	class Meta:
 		verbose_name = ('Категория')
@@ -17,8 +18,15 @@ class ShopCategory(models.Model):
 class ShopItem(models.Model):
 	name = models.CharField(max_length=100,verbose_name="Наименование")
 	description = models.TextField(verbose_name="Описание")
+	price = models.DecimalField(max_digits=10, decimal_places=2)
+	slug = models.SlugField(max_length=200,verbose_name="Ссылка")
 	img = models.FileField(upload_to=upload_img,blank=True, null=True,verbose_name="Изображение")
+	stock = models.PositiveIntegerField()
+	available = models.BooleanField(default=True)
 	published = models.DateTimeField(verbose_name="Дата добавления",default=timezone.now)
+	updated = models.DateTimeField(verbose_name="Дата изменения",default=timezone.now)
+
+
 
 	class Meta:
 		verbose_name = ('Товар')
