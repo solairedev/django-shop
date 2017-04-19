@@ -17,5 +17,6 @@ def shop_list(request):
 	  'last_items':last_items,
 	  'items':items,
 	  'tags':tags,
+	  'query':query,
 	}
 	return render (request,'shop/shop_list.html',context)
