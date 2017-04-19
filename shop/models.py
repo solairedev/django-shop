@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone 
+from django.core.urlresolvers import reverse
+
 
 def upload_img(object,filename):
 	return 'image/%s/%s'%(object.slug,filename)
@@ -27,12 +29,13 @@ class ShopItem(models.Model):
 	published = models.DateTimeField(verbose_name="Дата добавления",default=timezone.now)
 	updated = models.DateTimeField(verbose_name="Дата изменения",default=timezone.now)
 
-
-
 	class Meta:
 		verbose_name = ('Товар')
 		verbose_name_plural = ('Товары')
 		ordering = ['-published']
+
+	def get_absolute_url(self):
+		return reverse('shop:shop_detail',args=[self.id, self.slug])
 
 	def __str__(self):
 		return self.name

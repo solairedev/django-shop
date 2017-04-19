@@ -1,23 +1,36 @@
 {% extends 'shop/base.html' %}
 {% load staticfiles %}
 
-{% block title %}Fetish Tea Shop{% endblock %}
+{% block title %} {{ item.name }} {% endblock %}
+
+{% block head %}
+<style type="text/css">
+.card{
+	width: 100%;
+}
+.card img{
+	width: 354px;
+	float: left;
+}
+.card-text{
+  float: left;
+}
+</style>
+
+{% endblock %}
 
 {% block main %}
- <div class="album text-muted">
-      <div class="container">
-
+ <div id="content-scroll" class="album text-muted">
+      <div class="container" >
         <div class="row">
-        	{% for item in items %}
           <div class="card">
             <img src="{{ item.img.url}}"  alt="Card image cap">
             <div class="card-block">
 	            <h4 class="card-title">{{ item.name }}</h4>
 	            <p class="card-text">{{ item.description }}</p>
-	            <a href="{{ item.get_absolute_url }}#content-scroll" class="btn btn-primary">Просмотреть</a>
+	            <a href="#" class="btn btn-primary">Купить</a>
 	        </div>
           </div>
-          {% endfor %}
       </div>
     </div>
 {% endblock %}

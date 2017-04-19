@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import ShopItem, ShopCategory
 from django.db.models import Q
 from django.utils import timezone
@@ -20,3 +20,15 @@ def shop_list(request):
 	  'query':query,
 	}
 	return render (request,'shop/shop_list.html',context)
+
+def shop_detail(request, id, slug):
+	tags = ShopCategory.objects.all()
+	item = get_object_or_404(ShopItem,
+								id=id,
+								slug=slug,
+								available=True)
+	context = {
+		'tags':tags,
+		'item': item,
+	}
+	return render(request,'shop/shop_detail.html',context) 
