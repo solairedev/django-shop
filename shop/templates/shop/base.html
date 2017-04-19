@@ -46,7 +46,7 @@
         <h1 class="jumbotron-heading">Добро пожаловать. Снова.</h1>
         <p class="lead text-muted">В нашей уютной лавке вы найдете широчайший выбор чая отличного качества, традиционной посуды для чаепития, сможете оценить вкус и аромат древнего напитка продегустировав его.</p>
       <div class="btn-group">
-        <a href="/" class="btn btn-primary">Сбросить</a> 
+        <a href="/" class="btn btn-primary {% if not query %} disabled {% endif %}"  >Сбросить</a> 
   <button id="select-tag" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {% if query %} {{ query }} {% else %}  Выбрать {% endif %}
   </button>
