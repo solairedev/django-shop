@@ -9,6 +9,7 @@ def upload_img(object,filename):
 class ShopCategory(models.Model):
 	name = models.TextField(verbose_name="Наименование")
 	slug = models.SlugField(max_length=200,verbose_name="Ссылка",blank=True, null=True)
+	description = models.TextField(verbose_name="Описание",blank=True, null=True)
 
 	class Meta:
 		verbose_name = ('Категория')

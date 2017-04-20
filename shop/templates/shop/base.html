@@ -50,12 +50,17 @@
 
 <section class="jumbotron text-center">
       <div class="container">
+        {% if not select_tag %}
         <h1 class="jumbotron-heading">Добро пожаловать. Снова.</h1>
         <p class="lead text-muted">В нашей уютной лавке вы найдете широчайший выбор чая отличного качества, традиционной посуды для чаепития, сможете оценить вкус и аромат древнего напитка продегустировав его.</p>
+        {% else %}
+        <h1 class="jumbotron-heading">{{ select_tag.name }}</h1>
+        <p class="lead text-muted">{{ select_tag.description }}</p>
+        {% endif %}
       <div class="btn-group">
-        <a href="/" class="btn btn-primary {% if not query %} disabled {% endif %}"  >Сбросить</a> 
+        <a href="/" class="btn btn-primary {% if not select_tag %} disabled {% endif %}"  >Сбросить</a> 
   <button id="select-tag" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {% if query %} {{ query }} {% else %}  Выбрать {% endif %}
+    {% if select_tag %} {{ select_tag.name }} {% else %}  Выбрать {% endif %}
   </button>
   <div class="dropdown-menu">
     {% for tag in tags %}

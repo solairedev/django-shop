@@ -11,15 +11,18 @@ def shop_list(request):
 	items = ShopItem.objects.all()
 	last_items = ShopItem.objects.all()[:3]
 	query = request.GET.get('q')
+	select_tag = False
 	if query :
 		items = ShopItem.objects.filter(
             category__name__startswith=query 
            	).order_by('-published')
+		select_tag = ShopCategory.objects.get(name=query)
 	context = {
 	  'last_items':last_items,
 	  'items':items,
 	  'tags':tags,
 	  'query':query,
+	  'select_tag':select_tag,
 	}
 	return render (request,'shop/shop_list.html',context)
 
