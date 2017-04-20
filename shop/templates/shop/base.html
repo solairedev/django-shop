@@ -26,6 +26,9 @@
               <li><a href="http://twitter.com/solaire-off" class="text-white">Читать в Twitter</a></li>
               <li><a href="#" class="text-white">Найти в Facebook</a></li>
               <li><a href="http://victorananiev.info/contact/" class="text-white">Отправить Email</a></li>
+              {% if user.is_superuser %}
+              <li><a href="{% url 'admin:index' %}" class="text-white">Консоль</a></li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -34,6 +37,10 @@
     <div class="navbar navbar-inverse bg-inverse">
       <div class="container d-flex justify-content-between">
         <a href="/" class="navbar-brand">Fetish Tea Shop</a>
+  <!--<span class="navbar-text">
+    Ваша корзина пуста
+  </span>
+-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
