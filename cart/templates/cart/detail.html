@@ -9,6 +9,26 @@
 .jumbotron{
   display: none;
 }
+select{
+	font-size: 15px;
+    display: block;
+    width: inherit;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #464a4c;
+    background-color: #fff;
+    background-image: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
 </style>
 
 {% endblock %}
@@ -39,7 +59,15 @@
  </a>
  </td>
  <td>{{ product.name }}</td>
- <td>{{ item.quantity }}</td>
+ <td>
+ 
+<form action="{% url "cart:cart_add" product.id %}" method="post">
+ {{ item.update_quantity_form.quantity }}
+ {{ item.update_quantity_form.update }}
+ <!--<input type="submit" value="Обновить">-->
+ {% csrf_token %}
+ </form>
+</td>
  <td><a href="{% url "cart:cart_remove" product.id %}">Удалить</a></td>
  <td class="num">${{ item.price }}</td>
  <td class="num">${{ item.total_price }}</td>
@@ -60,4 +88,15 @@
 </div>
 </div>
 </div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript">
+$(document).ready(function() {
+  $('td form select').on('change', function() {
+    var $form = $(this).closest('form');
+    $form.submit();
+  });
+});
+</script>
 {% endblock %}
