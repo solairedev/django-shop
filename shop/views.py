@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import ShopItem, ShopCategory
 from django.db.models import Q
 from django.utils import timezone
+from cart.forms import CartAddProductForm
+
 
 
 def shop_list(request):
@@ -27,8 +29,10 @@ def shop_detail(request, id, slug):
 								id=id,
 								slug=slug,
 								available=True)
+	cart_product_form = CartAddProductForm()
 	context = {
 		'tags':tags,
 		'item': item,
+		'cart_product_form':cart_product_form,
 	}
 	return render(request,'shop/shop_detail.html',context) 

@@ -27,11 +27,39 @@
       <div class="container" >
         <div class="row">
           <div class="card">
-            <img src="{{ item.img.url}}"  alt="Card image cap">
+            <img src="{{ item.img.url}}"  alt="{{ item.name }}">
             <div class="card-block">
 	            <h4 class="card-title">{{ item.name }}</h4>
 	            <p class="card-text">{{ item.description }}</p>
-	            <a href="#" class="btn btn-primary">Купить</a>
+	            <p class="card-text">Цена за еденицу -  ${{ item.price }}</p>
+              <form action="{% url "cart:cart_add" item.id %}" method="post">
+               <!--{{ cart_product_form.as_p }}-->
+                  <p><label class="card-text" for="id_quantity">Количество:</label> <select id="id_quantity" name="quantity" class="card-text">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  </select>
+                  <input id="id_update" name="update" type="hidden" value="False" /></p>
+               {% csrf_token %}
+               <p><input type="submit" class="btn btn-primary" value="Добавить в корзину"></p>
+              </form>
 	        </div>
           </div>
       </div>

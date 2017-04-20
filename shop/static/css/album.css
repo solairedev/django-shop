@@ -45,7 +45,10 @@ body {
   object-fit:cover;
   height: 300px;
 }
-
+.table  img {
+  width: 100px;
+  height: auto;
+}
 .card-text {
   font-size: 85%;
 }

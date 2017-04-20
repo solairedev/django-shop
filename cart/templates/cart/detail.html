@@ -1,0 +1,63 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+	Корзина
+{% endblock %}
+
+{% block head %}
+<style type="text/css">
+.jumbotron{
+  display: none;
+}
+</style>
+
+{% endblock %}
+
+{% block main %}
+ <div id="content-scroll" class="album text-muted">
+      <div class="container" >
+        <div class="row">
+ <h1>Корзина</h1>
+ <table class="table">
+ <thead>
+ <tr>
+ <th>Изображение</th>
+ <th>Продукт</th>
+ <th>Количество</th>
+ <th>Удалить</th>
+ <th>Цена за еденицу</th>
+ <th>Цена</th>
+ </tr>
+ </thead>
+ <tbody>
+ {% for item in cart %}
+ {% with product=item.product %}
+ <tr>
+ <td>
+ <a href="{{ product.get_absolute_url }}">
+ <img src="{{ product.img.url}}">
+ </a>
+ </td>
+ <td>{{ product.name }}</td>
+ <td>{{ item.quantity }}</td>
+ <td><a href="{% url "cart:cart_remove" product.id %}">Удалить</a></td>
+ <td class="num">${{ item.price }}</td>
+ <td class="num">${{ item.total_price }}</td>
+ </tr>
+ {% endwith %}
+ {% endfor %}
+ <tr class="total">
+ <td>Всего</td>
+ <td colspan="4"></td>
+ <td class="num">${{ cart.get_total_price }}</td>
+ </tr>
+ </tbody>
+ </table>
+ <p class="text-right">
+ <a href="{% url "shop:shop_list" %}" class="btn btn-secondary">Вернуться в каталог</a>
+ <a href="#" class="btn btn-primary">Завершить покупку</a>
+ </p>
+</div>
+</div>
+</div>
+{% endblock %}
