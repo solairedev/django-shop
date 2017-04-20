@@ -10,11 +10,11 @@
         <div class="row">
         	{% for item in items %}
           <div class="card">
-            <img src="{{ item.img.url}}"  alt="Card image cap">
+            <img src="{{ item.img.url}}"  alt="{{ item.name }}">
             <div class="card-block">
 	            <h4 class="card-title">{{ item.name }}</h4>
 	            <p class="card-text">{{ item.description }}</p>
-	            <a href="{{ item.get_absolute_url }}#content-scroll" class="btn btn-primary">Просмотреть</a>
+	            <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Просмотреть</a>
 	        </div>
           </div>
           {% endfor %}
