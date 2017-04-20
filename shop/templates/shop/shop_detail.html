@@ -8,17 +8,33 @@
 .card{
 	width: 100%;
   flex-direction: row;
+  flex-wrap:wrap;
 }
-.card img{
-	width: 354px;
-	}
+
 .jumbotron{
   display: none;
 }
-.card-block{
-  width: 600px;
+select{
+    display: inline;
+    width: inherit;
+    padding: .2rem .2rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #464a4c;
+    background-color: #fff;
+    background-image: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 }
 </style>
+
 
 {% endblock %}
 
@@ -27,11 +43,11 @@
       <div class="container" >
         <div class="row">
           <div class="card">
-            <img src="{{ item.img.url}}"  alt="{{ item.name }}">
-            <div class="card-block">
+            <img class="col-lg-4 col-md-12 col-sm-12" src="{{ item.img.url}}"  alt="{{ item.name }}">
+            <div class="col-lg-8 col-md-12 col-sm-12 card-block">
 	            <h4 class="card-title">{{ item.name }}</h4>
 	            <p class="card-text">{{ item.description }}</p>
-	            <p class="card-text">Цена за еденицу -  ${{ item.price }}</p>
+	            <p class="card-text">Цена за грамм -  ${{ item.price }}</p>
               <form action="{% url "cart:cart_add" item.id %}" method="post">
                <!--{{ cart_product_form.as_p }}-->
                   <p><label class="card-text" for="id_quantity">Количество:</label> <select id="id_quantity" name="quantity" class="card-text">
