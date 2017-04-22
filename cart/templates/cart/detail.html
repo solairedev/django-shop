@@ -34,7 +34,7 @@ select{
 {% endblock %}
 
 {% block main %}
- <div id="content-scroll" class="album text-muted">
+ <div class="album text-muted">
       <div class="container" >
         <div class="row">
  <h1>Корзина</h1>
@@ -83,7 +83,7 @@ select{
  </table>
  <p class="text-right">
  <a href="{% url "shop:shop_list" %}" class="btn btn-secondary">Вернуться в каталог</a>
- <a href="#" class="btn btn-primary">Завершить покупку</a>
+ <a href="{% url "orders:order_create" %}" class="btn btn-primary">Завершить покупку</a>
  </p>
 </div>
 </div>

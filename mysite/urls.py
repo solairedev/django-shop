@@ -23,6 +23,7 @@ urlpatterns = [
 	url(r'', include('shop.urls')),
     url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^', include('shop.urls', namespace='shop')),
+    url(r'^orders/', include('orders.urls', namespace='orders')),
     url(r'^admin/', admin.site.urls),
    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

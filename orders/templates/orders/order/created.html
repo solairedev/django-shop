@@ -1,0 +1,34 @@
+{% extends "shop/base.html" %}
+{% block title %}
+ Заказ
+{% endblock %}
+
+{% block head %}
+<style type="text/css">
+#section-filter{
+  display: none;
+}
+input{
+	display: block;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+ <div class="album text-muted">
+      <div class="container" >
+        <div class="row">
+ <div class="col-lg-8">
+ <div class="jumbotron">
+  <h1 class="display-3">Спасибо!</h1>
+  <p class="lead">Ваша заявка успешно зафиксирована, ожидайте ответа на указанный адрес электронный почты. Номер вашего заказа {{ order.id }}.</p>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary" href="{% url "shop:shop_list" %}" role="button">Вернутся в каталог</a>
+  </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

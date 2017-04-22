@@ -13,6 +13,8 @@ class Order(models.Model):
 	paid = models.BooleanField(default=False,verbose_name="Оплачено")
 	
 	class Meta:
+		verbose_name = ('Заказ')
+		verbose_name_plural = ('Заказы')
 		ordering = ('-created',)
 	
 	def __str__(self):

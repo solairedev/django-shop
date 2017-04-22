@@ -1,0 +1,87 @@
+{% extends "shop/base.html" %}
+{% block title %}
+ Заказ
+{% endblock %}
+
+{% block head %}
+<style type="text/css">
+#section-filter{
+  display: none;
+}
+input{
+	display: block;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+ <div class="album text-muted">
+      <div class="container" >
+        <div class="row">
+
+ <div class="col-lg-6">
+ 	<div class="jumbotron">
+  <h1>Ваш заказ</h1>
+  <ul class="total-list">
+  {% for item in cart %}
+  <li class="lead">{{ item.quantity }}x {{ item.product.name }} по <span>${{ item.total_price }}</span></li>
+ {% endfor %}
+ </ul>
+  <hr class="my-4">
+  <p class="lead">
+  	Всего: ${{ cart.get_total_price }}
+  </p>
+
+</div>
+</div>
+
+<div class="col-lg-6">
+	<h2 class="p-b-15">Ваши контакты</h2>
+ <form action="." method="post" class="order-form">
+<div class="form-group row">
+  <label for="id_first_name" class="col-2 col-form-label">Имя:</label>
+  <div class="col-10">
+    <input class="form-control" id="id_first_name" maxlength="50" name="first_name" type="text">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="id_last_name" class="col-2 col-form-label">Фамилия:</label>
+  <div class="col-10">
+    <input class="form-control" id="id_last_name" maxlength="50" name="last_name" type="text">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="id_email" class="col-2 col-form-label">Почта:</label>
+  <div class="col-10">
+    <input class="form-control" id="id_email" maxlength="254" name="email" type="email">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="id_address" class="col-2 col-form-label">Адрес:</label>
+  <div class="col-10">
+    <input class="form-control" id="id_address" maxlength="254" name="address" type="text">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="id_postal_code" class="col-2 col-form-label">Индекс:</label>
+  <div class="col-10">
+    <input class="form-control" id="id_postal_code" maxlength="20" name="postal_code" type="text" />
+  </div>
+</div>
+<div class="form-group row">
+  <label for="id_city" class="col-2 col-form-label">Город:</label>
+  <div class="col-10">
+    <input class="form-control" id="id_city" maxlength="100" name="city" type="text" />
+  </div>
+</div>
+ <p class="text-center m-t-30" ><input type="submit" class="btn btn-primary" value="Зафиксировать заявку"></p>
+{% csrf_token %}
+</div>
+<!-- {{ form.as_p }}-->
+ </form>
+</div>
+
+</div>
+</div>
+</div>
+{% endblock %}
