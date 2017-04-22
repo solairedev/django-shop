@@ -46,7 +46,7 @@ select{
             <img class="col-lg-4 col-md-12 col-sm-12" src="{{ item.img.url}}"  alt="{{ item.name }}">
             <div class="col-lg-8 col-md-12 col-sm-12 card-block">
 	            <h4 class="card-title">{{ item.name }}</h4>
-	            <p class="card-text">{{ item.description }}</p>
+	            <p class="card-text">{{ item.description | linebreaks }}</p>
 	            <p class="card-text">Цена за грамм -  ${{ item.price }}</p>
               <form action="{% url "cart:cart_add" item.id %}" method="post">
                <!--{{ cart_product_form.as_p }}-->
