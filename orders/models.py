@@ -4,6 +4,7 @@ from shop.models import ShopItem
 class Order(models.Model):
 	first_name = models.CharField(max_length=50,verbose_name="Имя")
 	last_name = models.CharField(max_length=50,verbose_name="Фамилия")
+	phone = models.CharField(max_length=20,verbose_name="Телефон")
 	email = models.EmailField(verbose_name="Почта")
 	address = models.CharField(max_length=250,verbose_name="Адрес")
 	postal_code = models.CharField(max_length=20,verbose_name="Индекс")
