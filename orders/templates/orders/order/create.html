@@ -41,19 +41,19 @@ input{
 <div class="form-group row">
   <label for="id_first_name" class="col-2 col-form-label">Имя:</label>
   <div class="col-10">
-    <input class="form-control" id="id_first_name" maxlength="50" name="first_name" type="text">
+    <input class="russian-input form-control" id="id_first_name" maxlength="50" name="first_name" type="text">
   </div>
 </div>
 <div class="form-group row">
   <label for="id_last_name" class="col-2 col-form-label">Фамилия:</label>
   <div class="col-10">
-    <input class="form-control" id="id_last_name" maxlength="50" name="last_name" type="text">
+    <input class="russian-input form-control" id="id_last_name" maxlength="50" name="last_name" type="text">
   </div>
 </div>
 <div class="form-group row">
   <label for="id_phone" class="col-2 col-form-label">Телефон:</label>
-  <div class="col-10">
-    <input class="form-control" id="id_phone" maxlength="20" name="phone" type="text">
+  <div class="col-10 number-input">
+    <input class="form-control" id="id_phone" maxlength="20" name="phone" type="number">
   </div>
 </div>
 <div class="form-group row">
@@ -65,19 +65,19 @@ input{
 <div class="form-group row">
   <label for="id_address" class="col-2 col-form-label">Адрес:</label>
   <div class="col-10">
-    <input class="form-control" id="id_address" maxlength="254" name="address" type="text">
+    <input class="russian-input form-control" id="id_address" maxlength="254" name="address" type="text">
   </div>
 </div>
 <div class="form-group row">
   <label for="id_postal_code" class="col-2 col-form-label">Индекс:</label>
-  <div class="col-10">
-    <input class="form-control" id="id_postal_code" maxlength="20" name="postal_code" type="text" />
+  <div class="col-10 number-input">
+    <input class="form-control" id="id_postal_code" maxlength="20" name="postal_code" type="number" />
   </div>
 </div>
 <div class="form-group row">
   <label for="id_city" class="col-2 col-form-label">Город:</label>
   <div class="col-10">
-    <input class="form-control" id="id_city" maxlength="100" name="city" type="text" />
+    <input class="russian-input form-control" id="id_city" maxlength="100" name="city" type="text" />
   </div>
 </div>
  <p class="text-center m-t-30" ><input type="submit" class="btn btn-primary" value="Зафиксировать заявку"></p>
@@ -90,4 +90,28 @@ input{
 </div>
 </div>
 </div>
+{% endblock %}
+
+
+
+{% block footer %}
+<script type="text/javascript">
+$(function() {
+  $('.number-input').on('keydown', '#child', function(e){-1!==$.inArray(e.keyCode,[46,8,9,27,13,110,190])||/65|67|86|88/.test(e.keyCode)&&(!0===e.ctrlKey||!0===e.metaKey)||35<=e.keyCode&&40>=e.keyCode||(e.shiftKey||48>e.keyCode||57<e.keyCode)&&(96>e.keyCode||105<e.keyCode)&&e.preventDefault()});
+})
+</script>
+<script type="text/javascript">
+$(function() {
+  jQuery(function($) {
+    $('.russian-input').on('keypress', function() {
+      var that = this;
+      setTimeout(function() {
+        var res = /[^а-яА-ЯїЇєЄіІёЁ ]/g.exec(that.value);
+        that.value = that.value.replace(res, '');
+      }, 0);
+    });
+  });
+})
+</script>
+
 {% endblock %}
